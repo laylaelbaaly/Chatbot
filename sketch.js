@@ -4,6 +4,7 @@ let humanText;
 let sendBtn;
 let navigateBtn;
 let botText;
+let myVoice;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -66,6 +67,20 @@ function setup() {
     sendBtn.hide();
   }
 
+  myVoice = new p5.Speech();
+
+  speechRec = new p5.SpeechRec('en-us', gotSpeech);
+
+  speechRec.start(true, false);
+
+  function gotSpeech()
+  {
+    if (speechRec.resultValue == true) {
+      console.log(speechRec.resultString);
+      myVoice.speak(speechRec.resultString);
+      humanText = speechRec.resultString;
+    }
+  }
 
 }
 
@@ -91,7 +106,7 @@ function draw() {
   text("> Human text: " + humanText, (width/15), height - 200);
   
   //if statements for chatbot response
-  if (humanText.includes("Hello")) 
+  if (humanText.includes("hello")) 
   {
     botText = "Hello there!"
   }
