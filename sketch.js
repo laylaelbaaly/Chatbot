@@ -36,16 +36,19 @@ function setup() {
   rectMode(CENTER);
   rect(rectX, rectY, windowWidth - 50, 200, 20);
 
-  function HumanInputEvent()
-  {
-    console.log("this is the user input: "+this.value());
-  }
-
   //send button
   sendBtn = createButton("send");
   sendBtn.position(width - 150, height - 300);
   sendBtn.size(100);
   sendBtn.mousePressed(submitInput);
+  
+}
+
+function HumanInputEvent()
+  {
+    console.log("this is the user input: "+this.value());
+  }
+
 
 
   function submitInput()
@@ -82,8 +85,6 @@ function setup() {
     }
   }
 
-}
-
 function draw() {
   //background(220);
 
@@ -110,7 +111,7 @@ function draw() {
   {
     botText = "Hello there!"
   }
-  else if(humanText.includes("Good morning"))
+  else if(humanText.includes("good morning"))
   {
     botText = "Good morning user!"
   }
